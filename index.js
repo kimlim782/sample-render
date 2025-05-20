@@ -1,7 +1,10 @@
-let express = require('express');
-let app = express();
+const express = require('express');
+const app = express();
+const path = require('path');
+const port = 3000;
 
-let port = 3000;
+// ระบุ path ที่เก็บ static files เช่น CSS
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => {

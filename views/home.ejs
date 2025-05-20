@@ -1,3 +1,66 @@
-<h1>Home</h1>
-<h2>รักดรีม!</h2>
-<a href="/about">About me</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/stylesheets/home.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+
+<body class="light-theme">
+    <header id="themeHeader">
+        <div class="logo"><h1>LOGO</h1></div>
+        <div class="theme-switcher" style="opacity: 0.4;;">
+            <p colo>pull<br>to switch theme</p>
+            <span class="arrow">↓</span>
+        </div>
+        <nav>
+            <a href="#">about tarot</a>
+            <a href="#">contact</a>
+        </nav>
+    </header>
+
+    <h1>Welcome to my website!</h1>
+    <p>This is a simple Node.js website using EJS.</p>
+    <p>Check out the <a href="/about">about</a> page to learn more about me.</p>
+    <p>Feel free to explore and enjoy!</p>
+    <footer>
+        <p>&copy; 2023 My Website</p>
+    </footer>
+</body>
+
+<script>
+    let isDragging = false;
+    let startY = 0;
+
+    const header = document.getElementById('themeHeader');
+
+    header.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startY = e.clientY;
+    });
+
+    window.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (isDragging && e.clientY - startY > 100) {
+            // ถือว่าดึงเพียงพอแล้ว
+            isDragging = false;
+
+            // เพิ่ม animation ถ้าต้องการ
+            document.body.classList.toggle('theme-expanded');
+            // หรือดึง header ลงมาแบบคลุมหน้า
+            setTimeout(() => {
+                document.body.classList.remove('theme-expanded');
+            }, 500);
+            
+            // สลับธีม
+            document.body.classList.toggle('dark-theme');
+            document.body.classList.toggle('light-theme');
+        }
+    });
+</script>
